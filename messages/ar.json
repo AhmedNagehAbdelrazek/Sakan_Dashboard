@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "dashboard": "لوحة التحكم",
+    "login": "تسجيل الدخول"
+  },
+  "auth": {
+    "login": {
+      "title": "تسجيل الدخول",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "تسجيل دخول المسؤول",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "submitting": "جارٍ تسجيل الدخول...",
+      "emailPlaceholder": "admin@example.com",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "error": "بيانات الدخول غير صحيحة. حاول مرة أخرى.",
+      "genericError": "حدث خطأ ما. حاول مرة أخرى لاحقاً."
+    },
+    "loading": "جارٍ التحميل...",
+    "sidebar": {
+      "dashboard": "لوحة التحكم",
+      "general": "عام",
+      "settings": "الإعدادات",
+      "expand": "توسيع الشريط الجانبي",
+      "collapse": "طي الشريط الجانبي"
+    },
+    "topbar": {
+      "logout": "تسجيل الخروج"
+    },
+    "dashboard": {
+      "title": "لوحة التحكم",
+      "emptyTitle": "ابدأ الآن",
+      "emptyDescription": "لوحة التحكم فارغة. قم بتكوين الودجات في src/config/app.config.ts لملئها."
+    },
+    "settings": {
+      "placeholder": "ستظهر الإعدادات الخاصة بمشروعك هنا."
+    }
+  },
+  "dashboard": {
+    "kpis": {
+      "totalValue": "القيمة الإجمالية"
+    },
+    "widgets": {
+      "trend": "الاتجاه",
+      "topItems": "أفضل العناصر"
+    }
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "palette": "المظهر"
+  },
+  "errors": {
+    "generic": "حدث خطأ ما",
+    "retry": "حاول مرة أخرى",
+    "notFound": "الصفحة غير موجودة"
+  },
+  "common": {
+    "skipToContent": "تخطى إلى المحتوى الرئيسي",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "search": "بحث",
+    "confirm": "تأكيد",
+    "close": "إغلاق",
+    "loading": "جارٍ التحميل...",
+    "noData": "لا توجد بيانات",
+    "actions": "الإجراءات",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "yes": "نعم",
+    "no": "لا",
+    "clickToCopy": "اضغط للنسخ",
+    "copied": "تم النسخ!",
+    "generate": "توليد",
+    "name": "الاسم",
+    "price": "السعر",
+    "image": "الصورة"
+  }
+}

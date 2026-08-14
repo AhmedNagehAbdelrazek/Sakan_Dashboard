@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "login": "Login"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Admin Sign In",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "submitting": "Signing in...",
+      "emailPlaceholder": "admin@example.com",
+      "passwordPlaceholder": "Enter your password",
+      "error": "Invalid credentials. Please try again.",
+      "genericError": "Something went wrong. Please try again later."
+    },
+    "loading": "Loading...",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "general": "General",
+      "settings": "Settings",
+      "expand": "Expand sidebar",
+      "collapse": "Collapse sidebar"
+    },
+    "topbar": {
+      "logout": "Logout"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "emptyTitle": "Getting started",
+      "emptyDescription": "This dashboard is empty. Configure widgets in src/config/app.config.ts to populate it."
+    },
+    "settings": {
+      "placeholder": "Project-specific settings will appear here."
+    }
+  },
+  "dashboard": {
+    "kpis": {
+      "totalValue": "Total Value"
+    },
+    "widgets": {
+      "trend": "Trend",
+      "topItems": "Top Items"
+    }
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "palette": "Theme"
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "retry": "Try again",
+    "notFound": "Page not found"
+  },
+  "common": {
+    "skipToContent": "Skip to main content",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "confirm": "Confirm",
+    "close": "Close",
+    "loading": "Loading...",
+    "noData": "No data found",
+    "actions": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "yes": "Yes",
+    "no": "No",
+    "clickToCopy": "Click to copy",
+    "copied": "Copied!",
+    "generate": "Generate",
+    "name": "Name",
+    "price": "Price",
+    "image": "Image"
+  }
+}
