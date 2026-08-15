@@ -1,6 +1,8 @@
+packages: []
 allowBuilds:
   esbuild: true
   sharp: false
   unrs-resolver: false
 minimumReleaseAgeExclude:
   - '@hookform/resolvers@5.9.0'
+
