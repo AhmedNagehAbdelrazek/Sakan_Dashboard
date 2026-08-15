@@ -20,17 +20,22 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { email, password } = body;
 
-    const response = await request.post<BackendLoginResponse>(
-      "/api/auth/login",
-      { email, password },
-    );
+    const response = await request.post<BackendLoginResponse>("/api/auth/login", {
+      email,
+      password,
+    });
 
     const { token, user } = response;
     const nextResponse = NextResponse.json({ user, token });
 
+    const forwardedProto = req.headers.get("x-forwarded-proto");
+    const isSecure = forwardedProto
+      ? forwardedProto.split(",")[0].trim() === "https"
+      : new URL(req.url).protocol === "https:";
+
     nextResponse.cookies.set("auth_token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: isSecure,
       sameSite: "lax",
       path: "/",
       maxAge: 86400,
