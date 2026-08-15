@@ -19,7 +19,12 @@ import {
 import type { Application } from "../types/application.types";
 
 type RejectFormValues = {
-  reasonCategory: "not_available" | "not_interested" | "payment_issue" | "documents_missing" | "other";
+  reasonCategory:
+    | "not_available"
+    | "not_interested"
+    | "payment_issue"
+    | "documents_missing"
+    | "other";
   detail?: string;
 };
 
@@ -43,7 +48,7 @@ export function ApplicationsPage() {
   const items = data?.items ?? [];
   const filtered = search.trim()
     ? items.filter((application) =>
-        [application.propertyId, application.userId, application.id]
+        [application.property?.title, application.user?.username, application.id]
           .filter(Boolean)
           .some((value) => String(value).toLowerCase().includes(search.toLowerCase())),
       )
@@ -97,12 +102,13 @@ export function ApplicationsPage() {
           {
             key: "applicant",
             headerKey: "applications.columns.applicant",
-            render: (application) => application.userId || t("common.noData"),
+            render: (application) =>
+              application.user?.username || application.user?.email || t("common.noData"),
           },
           {
             key: "property",
             headerKey: "applications.columns.property",
-            render: (application) => application.propertyId || t("common.noData"),
+            render: (application) => application.property?.title || t("common.noData"),
           },
           {
             key: "status",
@@ -123,7 +129,9 @@ export function ApplicationsPage() {
             key: "createdAt",
             headerKey: "applications.columns.createdAt",
             render: (application) =>
-              application.createdAt ? new Date(application.createdAt).toLocaleString() : t("common.noData"),
+              application.createdAt
+                ? new Date(application.createdAt).toLocaleString()
+                : t("common.noData"),
           },
         ]}
         rows={filtered}
@@ -153,12 +161,13 @@ export function ApplicationsPage() {
             key: "property",
             labelKey: "applications.detail.property",
             render: (application) =>
-              detail.data?.Property?.title || application.propertyId || t("common.noData"),
+              detail.data?.property?.title || application.property?.title || t("common.noData"),
           },
           {
             key: "applicant",
             labelKey: "applications.columns.applicant",
-            render: (application) => application.userId || t("common.noData"),
+            render: (application) =>
+              detail.data?.user?.username || application.user?.username || t("common.noData"),
           },
           {
             key: "status",

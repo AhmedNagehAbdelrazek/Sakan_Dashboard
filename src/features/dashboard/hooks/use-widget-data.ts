@@ -12,11 +12,7 @@ interface UseWidgetDataOptions {
   limit?: number;
 }
 
-function substituteTemplates(
-  source: string,
-  range: WidgetDateRange,
-  limit?: number,
-): string {
+function substituteTemplates(source: string, range: WidgetDateRange, limit?: number): string {
   return source
     .replace("{from}", encodeURIComponent(range.from))
     .replace("{to}", encodeURIComponent(range.to))
@@ -26,7 +22,7 @@ function substituteTemplates(
 export function useWidgetData(
   source: string,
   range: WidgetDateRange,
-  options: UseWidgetDataOptions = {},
+  options: UseWidgetDataOptions = { limit:20},
 ) {
   const url = substituteTemplates(source, range, options.limit);
 

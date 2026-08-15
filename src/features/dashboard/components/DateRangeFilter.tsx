@@ -3,11 +3,7 @@
 import { useState, useCallback } from "react";
 import { format, subDays, startOfDay, endOfDay } from "date-fns";
 import { CalendarIcon, ChevronDown } from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
@@ -131,11 +127,7 @@ export function DateRangeFilter({ value, onChange }: DateRangeFilterProps) {
                 ))}
               </div>
             </div>
-            <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={handleCalendarSelect}
-            />
+            <Calendar mode="single" selected={selectedDate} onSelect={handleCalendarSelect} />
           </div>
         </PopoverContent>
       </Popover>

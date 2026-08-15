@@ -34,7 +34,13 @@ export function PaymentsPage() {
   const items = data?.items ?? [];
   const filtered = search.trim()
     ? items.filter((payment) =>
-        [payment.applicationId, payment.studentId, payment.landlordId, payment.id]
+        [
+          payment.student?.username,
+          payment.landlord?.username,
+          payment.application?.id,
+          payment.applicationId,
+          payment.id,
+        ]
           .filter(Boolean)
           .some((value) => String(value).toLowerCase().includes(search.toLowerCase())),
       )
@@ -72,7 +78,9 @@ export function PaymentsPage() {
   };
 
   const formatAmount = (payment: Payment) =>
-    payment.amount != null ? `${payment.amount} ${payment.currency ?? ""}`.trim() : t("common.noData");
+    payment.amount != null
+      ? `${payment.amount} ${payment.currency ?? ""}`.trim()
+      : t("common.noData");
 
   return (
     <div className="space-y-4">
@@ -86,7 +94,8 @@ export function PaymentsPage() {
           {
             key: "application",
             headerKey: "payments.columns.application",
-            render: (payment) => payment.applicationId || t("common.noData"),
+            render: (payment) =>
+              payment.application?.id || payment.applicationId || t("common.noData"),
           },
           {
             key: "amount",
@@ -140,7 +149,20 @@ export function PaymentsPage() {
           {
             key: "application",
             labelKey: "payments.columns.application",
-            render: (payment) => payment.applicationId || t("common.noData"),
+            render: (payment) =>
+              payment.application?.id || payment.applicationId || t("common.noData"),
+          },
+          {
+            key: "student",
+            labelKey: "payments.columns.student",
+            render: (payment) =>
+              payment.student?.username || payment.studentId || t("common.noData"),
+          },
+          {
+            key: "landlord",
+            labelKey: "payments.columns.landlord",
+            render: (payment) =>
+              payment.landlord?.username || payment.landlordId || t("common.noData"),
           },
           {
             key: "amount",
@@ -161,13 +183,17 @@ export function PaymentsPage() {
             key: "receivedAt",
             labelKey: "payments.detail.receivedAt",
             render: (payment) =>
-              payment.receivedAt ? new Date(payment.receivedAt).toLocaleString() : t("common.noData"),
+              payment.receivedAt
+                ? new Date(payment.receivedAt).toLocaleString()
+                : t("common.noData"),
           },
           {
             key: "releasedAt",
             labelKey: "payments.detail.releasedAt",
             render: (payment) =>
-              payment.releasedAt ? new Date(payment.releasedAt).toLocaleString() : t("common.noData"),
+              payment.releasedAt
+                ? new Date(payment.releasedAt).toLocaleString()
+                : t("common.noData"),
           },
           {
             key: "refundReason",
@@ -178,7 +204,9 @@ export function PaymentsPage() {
             key: "refundedAt",
             labelKey: "payments.detail.refundedAt",
             render: (payment) =>
-              payment.refundedAt ? new Date(payment.refundedAt).toLocaleString() : t("common.noData"),
+              payment.refundedAt
+                ? new Date(payment.refundedAt).toLocaleString()
+                : t("common.noData"),
           },
         ]}
         footer={

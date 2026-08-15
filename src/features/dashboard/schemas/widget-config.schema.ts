@@ -19,6 +19,10 @@ export const statCardOptionsSchema = z.object({
 
 export const chartOptionsSchema = z.object({
   chartType: z.enum(["line", "bar", "area"]),
+  dataPath: z
+    .string()
+    .optional()
+    .describe("dot-path into the widget payload that points to the row array"),
   xField: z.string().min(1, "chart options.xField must not be empty"),
   yFields: z.array(z.string().min(1)).min(1, "chart options.yFields must not be empty"),
 });
@@ -37,8 +41,16 @@ export const rankedListOptionsSchema = z.object({
 });
 
 export const breakdownOptionsSchema = z.object({
+  dataPath: z
+    .string()
+    .optional()
+    .describe("dot-path into the widget payload pointing to the row array or status object"),
   labelField: z.string().min(1, "breakdown options.labelField must not be empty"),
   valueField: z.string().min(1, "breakdown options.valueField must not be empty"),
+  labelPrefix: z
+    .string()
+    .optional()
+    .describe("i18n key prefix used to translate row labels (e.g. 'dashboard.status.application')"),
   format: numberFormatSchema,
 });
 

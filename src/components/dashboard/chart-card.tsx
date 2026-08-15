@@ -4,6 +4,7 @@ import type { WidgetDateRange } from "@/features/dashboard/hooks/use-widget-data
 import { useWidgetData } from "@/features/dashboard/hooks/use-widget-data";
 import type { ChartWidgetConfig } from "@/features/dashboard/schemas/widget-config.schema";
 import type { WidgetRecord } from "@/features/dashboard/types/dashboard.types";
+import { getByPath } from "@/lib/object";
 import {
   Area,
   AreaChart,
@@ -26,13 +27,10 @@ interface ChartCardProps {
 }
 
 export function ChartCard({ config, range }: ChartCardProps) {
-  const { data, isLoading, isError, refetch } = useWidgetData(
-    config.source,
-    range,
-  );
-  const rows: WidgetRecord[] = Array.isArray(data)
-    ? (data as WidgetRecord[])
-    : [];
+  const { data, isLoading, isError, refetch } = useWidgetData(config.source, range);
+  const raw =
+    config.options.dataPath !== undefined ? getByPath(data, config.options.dataPath) : data;
+  const rows: WidgetRecord[] = Array.isArray(raw) ? (raw as WidgetRecord[]) : [];
   const { chartType, xField, yFields } = config.options;
 
   const chart =

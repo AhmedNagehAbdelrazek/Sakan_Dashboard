@@ -3,6 +3,15 @@ export type PropertyRequestStatus = "pending" | "contacted" | "resolved" | "clos
 export interface PropertyRequest {
   id: string;
   userId?: string;
+  user?: {
+    id?: string;
+    username?: string;
+    email?: string;
+    phone?: string;
+    role?: string;
+    verified?: boolean;
+    active?: boolean;
+  };
   message?: string;
   propertyType?: string;
   requestType?: string;

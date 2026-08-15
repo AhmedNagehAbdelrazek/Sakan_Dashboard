@@ -4,6 +4,7 @@ import type { WidgetDateRange } from "@/features/dashboard/hooks/use-widget-data
 import { useWidgetData } from "@/features/dashboard/hooks/use-widget-data";
 import type { StatCardWidgetConfig } from "@/features/dashboard/schemas/widget-config.schema";
 import { formatCurrency, formatNumber } from "@/lib/format";
+import { getByPath } from "@/lib/object";
 import { WidgetFrame } from "./widget-frame";
 
 interface StatCardProps {
@@ -12,19 +13,21 @@ interface StatCardProps {
 }
 
 export function StatCard({ config, range }: StatCardProps) {
-  const { data, isLoading, isError, refetch } = useWidgetData(
-    config.source,
-    range,
-  );
+  const { data, isLoading, isError, refetch } = useWidgetData(config.source, range);
 
   let value: number | null = null;
 
   if (typeof data === "number") {
     value = data;
   } else if (data && typeof data === "object" && !Array.isArray(data)) {
-    const fieldValue = (data as Record<string, unknown>)[config.options.field];
+    const fieldValue = getByPath(data, config.options.field);
     if (typeof fieldValue === "number") {
       value = fieldValue;
+    } else if (typeof fieldValue === "string" && fieldValue.trim() !== "") {
+      const parsed = Number(fieldValue);
+      if (Number.isFinite(parsed)) {
+        value = parsed;
+      }
     }
   }
 

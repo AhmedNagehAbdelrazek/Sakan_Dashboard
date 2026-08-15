@@ -21,8 +21,8 @@ export async function fetchWidget(source: string): Promise<unknown> {
   return envelope.data.data;
 }
 
-export async function getDashboardMetrics(): Promise<DashboardMetrics> {
-  const response = await fetch("/api/admin/dashboard");
+export async function getDashboardMetrics(url = "/api/admin/dashboard"): Promise<DashboardMetrics> {
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to load dashboard metrics (${response.status})`);
   }

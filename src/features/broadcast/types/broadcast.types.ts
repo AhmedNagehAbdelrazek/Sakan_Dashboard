@@ -5,6 +5,5 @@ export interface BroadcastInput {
 }
 
 export interface BroadcastResult {
-  message: string;
-  recipients: number;
+  delivered: number;
 }

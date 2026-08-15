@@ -13,19 +13,11 @@ export async function proxyGet<T>(req: NextRequest, path: string): Promise<T> {
   return request.get<T>(buildUrl(path, req), { headers: getAuthHeaders(req) });
 }
 
-export async function proxyPatch<T>(
-  req: NextRequest,
-  path: string,
-  body?: unknown,
-): Promise<T> {
+export async function proxyPatch<T>(req: NextRequest, path: string, body?: unknown): Promise<T> {
   return request.patch<T>(path, body ?? {}, { headers: getAuthHeaders(req) });
 }
 
-export async function proxyPost<T>(
-  req: NextRequest,
-  path: string,
-  body?: unknown,
-): Promise<T> {
+export async function proxyPost<T>(req: NextRequest, path: string, body?: unknown): Promise<T> {
   return request.post<T>(path, body ?? {}, { headers: getAuthHeaders(req) });
 }
 

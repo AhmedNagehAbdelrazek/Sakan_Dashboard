@@ -6,7 +6,7 @@ import { WidgetRenderer } from "@/components/dashboard/widget-renderer";
 import { appConfig } from "@/config/app.config";
 import { useTranslation } from "@/lib/i18n/client";
 import { DateRangeFilter } from "./DateRangeFilter";
-import { RecentActivities } from "./RecentActivities";
+import { NeedsAttention } from "./NeedsAttention";
 
 interface DateRange {
   from: string;
@@ -18,10 +18,7 @@ const today = new Date();
 export function DashboardPage() {
   const { t } = useTranslation();
   const [range, setRange] = useState<DateRange>({
-    from: format(
-      subDays(today, appConfig.dashboard.defaultDateRangeDays - 1),
-      "yyyy-MM-dd",
-    ),
+    from: format(subDays(today, appConfig.dashboard.defaultDateRangeDays - 1), "yyyy-MM-dd"),
     to: format(today, "yyyy-MM-dd"),
   });
 
@@ -36,7 +33,7 @@ export function DashboardPage() {
           <WidgetRenderer key={widget.id} config={widget} range={range} />
         ))}
       </div>
-      <RecentActivities />
+      <NeedsAttention range={range} />
     </div>
   );
 }

@@ -13,13 +13,8 @@ interface RankedListProps {
 }
 
 export function RankedList({ config, range }: RankedListProps) {
-  const { data, isLoading, isError, refetch } = useWidgetData(
-    config.source,
-    range,
-  );
-  const rows: WidgetRecord[] = Array.isArray(data)
-    ? (data as WidgetRecord[])
-    : [];
+  const { data, isLoading, isError, refetch } = useWidgetData(config.source, range);
+  const rows: WidgetRecord[] = Array.isArray(data) ? (data as WidgetRecord[]) : [];
   const { rankField, labelField, valueFields } = config.options;
 
   return (
@@ -32,11 +27,8 @@ export function RankedList({ config, range }: RankedListProps) {
     >
       <ol className="space-y-3">
         {rows.map((row, index) => (
-          <li
-            key={`${row[labelField]}-${index}`}
-            className="flex items-center gap-3"
-          >
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-semibold">
+          <li key={`${row[labelField]}-${index}`} className="flex items-center gap-3">
+            <span className="bg-muted flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold">
               {row[rankField] ?? index + 1}
             </span>
             <span className="flex-1 truncate text-sm">{row[labelField]}</span>

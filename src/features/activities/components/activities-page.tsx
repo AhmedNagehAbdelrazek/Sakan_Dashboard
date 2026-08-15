@@ -20,10 +20,12 @@ export function ActivitiesPage() {
   const items = data?.items ?? [];
   const filtered = search.trim()
     ? items.filter((activity) => {
-        const username = activity.User?.username ?? "";
+        const username = activity.user?.username ?? "";
         const type = activity.activityType ?? "";
-        return username.toLowerCase().includes(search.toLowerCase()) ||
-          type.toLowerCase().includes(search.toLowerCase());
+        return (
+          username.toLowerCase().includes(search.toLowerCase()) ||
+          type.toLowerCase().includes(search.toLowerCase())
+        );
       })
     : items;
 
@@ -39,7 +41,7 @@ export function ActivitiesPage() {
           {
             key: "user",
             headerKey: "activities.columns.user",
-            render: (activity) => activity.User?.username || activity.userId || t("common.noData"),
+            render: (activity) => activity.user?.username || activity.userId || t("common.noData"),
           },
           {
             key: "type",
@@ -83,7 +85,7 @@ export function ActivitiesPage() {
           {
             key: "user",
             labelKey: "activities.detail.user",
-            render: (activity) => activity.User?.username || activity.userId || t("common.noData"),
+            render: (activity) => activity.user?.username || activity.userId || t("common.noData"),
           },
           {
             key: "type",
@@ -102,7 +104,7 @@ export function ActivitiesPage() {
             key: "details",
             labelKey: "activities.columns.details",
             render: (activity) => (
-              <pre className="whitespace-pre-wrap font-mono text-xs">
+              <pre className="font-mono text-xs whitespace-pre-wrap">
                 {JSON.stringify(activity.activityDetails ?? {}, null, 2)}
               </pre>
             ),

@@ -43,7 +43,7 @@ export function BroadcastPage() {
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl space-y-4">
       {result && (
         <div className="bg-muted rounded-md p-3 text-sm" role="status">
-          {t("broadcast.success").replace("{count}", String(result.recipients))}
+          {t("broadcast.success").replace("{count}", String(result.delivered))}
         </div>
       )}
       {error && (

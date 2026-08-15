@@ -13,6 +13,15 @@ export interface Property {
   address?: string;
   amenities?: Record<string, boolean>;
   userId?: string;
+  owner?: {
+    id?: string;
+    username?: string;
+    email?: string;
+    phone?: string;
+    role?: string;
+    verified?: boolean;
+    active?: boolean;
+  };
   isActive?: boolean;
   state: PropertyState;
   createdAt?: string;

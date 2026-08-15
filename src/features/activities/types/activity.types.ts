@@ -6,7 +6,8 @@ export interface Activity {
   timestamp?: string;
   createdAt?: string;
   updatedAt?: string;
-  User?: {
+  user?: {
+    id?: string;
     username?: string;
     email?: string;
     role?: string;

@@ -78,22 +78,43 @@
   },
   "dashboard": {
     "kpis": {
-      "totalValue": "القيمة الإجمالية",
       "totalUsers": "إجمالي المستخدمين",
-      "totalLandlords": "الملاك",
-      "totalStudents": "الطلاب",
-      "totalProperties": "العقارات",
-      "approvedProperties": "العقارات المعتمدة",
-      "totalApplications": "الطلبات",
-      "pendingApplications": "الطلبات المعلقة",
-      "totalPayments": "المدفوعات",
-      "receivedPayments": "المدفوعات المستلمة",
-      "releasedPayments": "المدفوعات المصدرة"
+      "newUsers": "مستخدمون جدد",
+      "activeListings": "الإعلانات النشطة",
+      "newListings": "إعلانات جديدة"
     },
-    "widgets": {
-      "trend": "الاتجاه",
-      "topItems": "أفضل العناصر",
-      "recentActivities": "النشاط الأخير"
+    "breakdown": {
+      "applications": "الطلبات حسب الحالة",
+      "payments": "المدفوعات حسب الحالة"
+    },
+    "trends": {
+      "users": "اتجاه المستخدمين",
+      "applications": "اتجاه الطلبات",
+      "payments": "اتجاه المدفوعات"
+    },
+    "status": {
+      "application": {
+        "pending": "معلق",
+        "approved": "معتمد",
+        "paid": "مدفوع",
+        "checked_in": "تم تسجيل الوصول",
+        "rejected": "مرفوض",
+        "refunded": "مسترد",
+        "completed": "مكتمل"
+      },
+      "payment": {
+        "pending": "معلق",
+        "received": "مستلم",
+        "released": "مصدر",
+        "refunded": "مسترد"
+      }
+    },
+    "needsAttention": {
+      "title": "يتطلب الانتباه",
+      "applications": "الطلبات",
+      "payments": "المدفوعات",
+      "propertyRequests": "طلبات العقارات",
+      "properties": "العقارات"
     }
   },
   "users": {
@@ -217,6 +238,7 @@
     "columns": {
       "application": "الطلب",
       "student": "الطالب",
+      "landlord": "المالك",
       "amount": "المبلغ",
       "method": "الطريقة",
       "status": "الحالة"

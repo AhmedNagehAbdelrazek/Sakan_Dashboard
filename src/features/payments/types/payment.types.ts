@@ -5,6 +5,27 @@ export interface Payment {
   applicationId?: string;
   studentId?: string;
   landlordId?: string;
+  application?: {
+    id?: string;
+  };
+  student?: {
+    id?: string;
+    username?: string;
+    email?: string;
+    phone?: string;
+    role?: string;
+    verified?: boolean;
+    active?: boolean;
+  };
+  landlord?: {
+    id?: string;
+    username?: string;
+    email?: string;
+    phone?: string;
+    role?: string;
+    verified?: boolean;
+    active?: boolean;
+  };
   status: PaymentStatus;
   amount?: number;
   currency?: string;

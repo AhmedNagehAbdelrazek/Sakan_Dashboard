@@ -9,6 +9,11 @@ export interface FlatmateRequest {
   user?: {
     id?: string;
     username?: string;
+    email?: string;
+    phone?: string;
+    role?: string;
+    verified?: boolean;
+    active?: boolean;
   };
   createdAt?: string;
   updatedAt?: string;

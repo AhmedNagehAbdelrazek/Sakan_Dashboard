@@ -10,7 +10,10 @@ import { EntityTable } from "@/components/management/entity-table";
 import { EntityToolbar } from "@/components/management/entity-toolbar";
 import { useTranslation } from "@/lib/i18n/client";
 import { propertyRequestTransitionSchema } from "../schemas/propertyRequest.schema";
-import { usePropertyRequestStatusUpdate, usePropertyRequests } from "../hooks/use-property-requests";
+import {
+  usePropertyRequestStatusUpdate,
+  usePropertyRequests,
+} from "../hooks/use-property-requests";
 import type { PropertyRequest, PropertyRequestStatus } from "../types/propertyRequest.types";
 
 const TRANSITION_TARGETS: Record<PropertyRequestStatus, PropertyRequestStatus[]> = {
@@ -121,6 +124,11 @@ export function PropertyRequestsPage() {
         titleKey="propertyRequests.detail.title"
         record={selected}
         fields={[
+          {
+            key: "user",
+            labelKey: "propertyRequests.columns.user",
+            render: (request) => request.user?.username || request.userId || t("common.noData"),
+          },
           {
             key: "message",
             labelKey: "propertyRequests.columns.message",

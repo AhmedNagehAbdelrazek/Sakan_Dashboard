@@ -29,6 +29,7 @@ const SAMPLE_DATA: Record<string, unknown> = {
 export async function GET(request: NextRequest) {
   const kind = request.nextUrl.searchParams.get("kind");
   const data = kind ? SAMPLE_DATA[kind] : undefined;
+  console.log(data);
 
   if (!data) {
     return NextResponse.json(

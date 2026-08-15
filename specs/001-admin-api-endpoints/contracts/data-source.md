@@ -41,19 +41,36 @@ Dashboard widgets read `envelope.data` for one of four kinds:
 
 | Widget kind | `data` shape | `options` |
 |-------------|--------------|-----------|
-| `stat-card` | a number, or an object containing the numeric `field` | `{ field, format: "number"\|"currency" }` |
-| `chart` | array of row objects | `{ chartType: "line"\|"bar"\|"area", xField, yFields[] }` |
+| `stat-card` | a number, or an object containing the numeric `field` (dot-path supported, e.g. `metrics.users.totalUsersCount`) | `{ field, format: "number"\|"currency" }` |
+| `chart` | array of row objects (optionally reached via `dataPath` dot-path) | `{ chartType: "line"\|"bar"\|"area", dataPath?, xField, yFields[] }` |
 | `ranked-list` | array of row objects | `{ rankField, labelField, valueFields: [{ key, format }] }` |
-| `breakdown` | array of row objects | `{ labelField, valueField, format }` |
+| `breakdown` | array of row objects, or a status object `{ status: count }` (via `dataPath` + `labelPrefix`) | `{ dataPath?, labelField, valueField, labelPrefix?, format }` |
 
 Widget `source` MUST be a local route path beginning with `/` (enforced by config schema). Templates `{from}`, `{to}`, `{limit}` are substituted before fetch.
 
 ### Dashboard metrics (this feature)
 
-`src/app/api/admin/dashboard/route.ts` proxies the backend `/api/admin/dashboard` and returns `{ status: "success", data: { totalUsers, totalLandlords, totalStudents, totalProperties, approvedProperties, totalApplications, pendingApplications, totalPayments, receivedPayments, releasedPayments, recentActivities } }`.
+`src/app/api/admin/dashboard/route.ts` proxies the backend `/api/admin/dashboard` (forwarding the `from`, `to`, and `limit` query params) and returns `{ status: "success", data: <backend payload> }` where the payload is:
 
-- 10 numeric metrics → `stat-card` widgets (`field` + `format: "number"`).
-- `recentActivities` → `ranked-list` widget.
+```json
+{
+  "range": { "from": "...", "to": "..." },
+  "metrics": {
+    "users": { "newUsersCount": 16, "totalUsersCount": 16 },
+    "properties": { "activeListingsCount": 3, "newListingsCount": 6 },
+    "applications": { "byStatus": { "pending": 2, "approved": 1, "paid": 0, "checked_in": 1, "rejected": 1, "refunded": 0, "completed": 1 } },
+    "payments": { "byStatus": { "pending": 1, "received": 1, "released": 1, "refunded": 0 } }
+  },
+  "needsAttention": { "applications": [], "payments": [], "propertyRequests": [], "properties": [] },
+  "trends": { "users": [{ "date": "...", "count": 0 }], "applications": [...], "payments": [...] },
+  "meta": { "limit": 20 }
+}
+```
+
+- `metrics.users.totalUsersCount`, `metrics.users.newUsersCount`, `metrics.properties.activeListingsCount`, `metrics.properties.newListingsCount` → `stat-card` widgets (`field` dot-path + `format: "number"`).
+- `metrics.applications.byStatus` / `metrics.payments.byStatus` → `breakdown` widgets (`dataPath`, `labelPrefix`).
+- `trends.users` / `trends.applications` / `trends.payments` → `chart` widgets (`dataPath`, `xField: "date"`, `yFields: ["count"]`).
+- `needsAttention` → `src/features/dashboard/components/NeedsAttention.tsx` panel (fetched via `useDashboardMetrics`, scoped to the selected range).
 
 ## Management block contract
 

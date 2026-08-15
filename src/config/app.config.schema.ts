@@ -1,7 +1,5 @@
 import { z } from "zod";
-import {
-  dashboardWidgetConfigSchema,
-} from "@/features/dashboard/schemas/widget-config.schema";
+import { dashboardWidgetConfigSchema } from "@/features/dashboard/schemas/widget-config.schema";
 
 export const paletteNameSchema = z.enum(["default", "ocean", "forest"]);
 export const themeModeSchema = z.enum(["light", "dark"]);
@@ -33,9 +31,7 @@ export const brandingConfigSchema = z.object({
     .string()
     .nullable()
     .refine(
-      (p) =>
-        p === null ||
-        (p.startsWith("/") && !p.includes("..") && !p.includes("\\")),
+      (p) => p === null || (p.startsWith("/") && !p.includes("..") && !p.includes("\\")),
       "branding.logoPath must be an absolute public asset path starting with / (e.g. /logo.svg)",
     ),
   palette: paletteNameSchema,

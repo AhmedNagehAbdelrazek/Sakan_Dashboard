@@ -78,22 +78,43 @@
   },
   "dashboard": {
     "kpis": {
-      "totalValue": "Total Value",
       "totalUsers": "Total Users",
-      "totalLandlords": "Landlords",
-      "totalStudents": "Students",
-      "totalProperties": "Properties",
-      "approvedProperties": "Approved Properties",
-      "totalApplications": "Applications",
-      "pendingApplications": "Pending Applications",
-      "totalPayments": "Payments",
-      "receivedPayments": "Received Payments",
-      "releasedPayments": "Released Payments"
+      "newUsers": "New Users",
+      "activeListings": "Active Listings",
+      "newListings": "New Listings"
     },
-    "widgets": {
-      "trend": "Trend",
-      "topItems": "Top Items",
-      "recentActivities": "Recent Activity"
+    "breakdown": {
+      "applications": "Applications by Status",
+      "payments": "Payments by Status"
+    },
+    "trends": {
+      "users": "Users Trend",
+      "applications": "Applications Trend",
+      "payments": "Payments Trend"
+    },
+    "status": {
+      "application": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "paid": "Paid",
+        "checked_in": "Checked In",
+        "rejected": "Rejected",
+        "refunded": "Refunded",
+        "completed": "Completed"
+      },
+      "payment": {
+        "pending": "Pending",
+        "received": "Received",
+        "released": "Released",
+        "refunded": "Refunded"
+      }
+    },
+    "needsAttention": {
+      "title": "Needs Attention",
+      "applications": "Applications",
+      "payments": "Payments",
+      "propertyRequests": "Property Requests",
+      "properties": "Properties"
     }
   },
   "users": {
@@ -217,6 +238,7 @@
     "columns": {
       "application": "Application",
       "student": "Student",
+      "landlord": "Landlord",
       "amount": "Amount",
       "method": "Method",
       "status": "Status"

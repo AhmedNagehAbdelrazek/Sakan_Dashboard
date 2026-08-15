@@ -37,7 +37,7 @@ export function WidgetFrame({
   }
 
   return (
-    <div className="rounded-lg border bg-card p-5 shadow-sm">
+    <div className="bg-card rounded-lg border p-5 shadow-sm">
       <h3 className="mb-4 text-base font-semibold">{t(titleKey)}</h3>
       {body}
     </div>

@@ -127,7 +127,7 @@ export function PropertiesPage() {
           {
             key: "owner",
             headerKey: "properties.columns.owner",
-            render: (property) => property.userId || t("common.noData"),
+            render: (property) => property.owner?.username || t("common.noData"),
           },
         ]}
         rows={filtered}
@@ -167,6 +167,14 @@ export function PropertiesPage() {
             key: "address",
             labelKey: "properties.detail.address",
             render: (property) => property.address || t("common.noData"),
+          },
+          {
+            key: "owner",
+            labelKey: "properties.columns.owner",
+            render: (property) =>
+              property.owner
+                ? `${property.owner.username} (${property.owner.email ?? property.owner.id ?? ""})`
+                : t("common.noData"),
           },
           {
             key: "price",
