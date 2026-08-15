@@ -6,6 +6,7 @@ import { WidgetRenderer } from "@/components/dashboard/widget-renderer";
 import { appConfig } from "@/config/app.config";
 import { useTranslation } from "@/lib/i18n/client";
 import { DateRangeFilter } from "./DateRangeFilter";
+import { RecentActivities } from "./RecentActivities";
 
 interface DateRange {
   from: string;
@@ -35,6 +36,7 @@ export function DashboardPage() {
           <WidgetRenderer key={widget.id} config={widget} range={range} />
         ))}
       </div>
+      <RecentActivities />
     </div>
   );
 }

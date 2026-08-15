@@ -74,11 +74,15 @@ describe("appConfigSchema", () => {
   });
 
   it("rejects a navigation section that has both children and an href", () => {
+    const groupSection = appConfig.navigation.find(
+      (section) => section.children && section.children.length > 0,
+    );
+    expect(groupSection).toBeDefined();
     const bad = {
       ...appConfig,
       navigation: [
         {
-          ...appConfig.navigation[1],
+          ...groupSection,
           href: "/admin/settings",
         },
       ],

@@ -1,17 +1,31 @@
 import { NextResponse } from "next/server";
 import { request } from "@/lib/api/Request";
 
+interface BackendLoginResponse {
+  user: {
+    id: string;
+    username: string;
+    email: string;
+    phone?: string | null;
+    countryCode?: string | null;
+    role: string;
+    verified?: boolean;
+  };
+  role: string;
+  token: string;
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { email, password } = body;
 
-    const response = await request.post<{
-      data: { token: string; user: { id: string; email: string; name: string; role: string } };
-      status: string;
-    }>("/admin/auth/login", { email, password });
-    
-    const { token, user } = response.data;
+    const response = await request.post<BackendLoginResponse>(
+      "/api/auth/login",
+      { email, password },
+    );
+
+    const { token, user } = response;
     const nextResponse = NextResponse.json({ user, token });
 
     nextResponse.cookies.set("auth_token", token, {

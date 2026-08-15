@@ -8,7 +8,7 @@ export interface EntityListMeta {
   page: number;
   limit: number;
   total: number;
-  total_pages: number;
+  totalPages: number;
 }
 
 interface EntityPaginationProps {
@@ -28,13 +28,13 @@ export function EntityPagination({
 }: EntityPaginationProps) {
   const { t } = useTranslation();
 
-  if (!meta || meta.total_pages <= 1) {
+  if (!meta || meta.totalPages <= 1) {
     return null;
   }
 
   const label = t(pageLabelKey)
     .replace("{page}", String(meta.page))
-    .replace("{pages}", String(meta.total_pages));
+    .replace("{pages}", String(meta.totalPages));
 
   return (
     <div className="flex items-center justify-between">
@@ -52,7 +52,7 @@ export function EntityPagination({
         <Button
           variant="outline"
           size="sm"
-          disabled={meta.page >= meta.total_pages}
+          disabled={meta.page >= meta.totalPages}
           onClick={() => onPageChange(meta.page + 1)}
         >
           {t(nextLabelKey)}

@@ -1,7 +1,8 @@
 import { tokenHolder } from "@/lib/api/token";
+import type { AdminLoginResponse } from "../types/auth.types";
 
 export const adminAuthService = {
-  login: async (email: string, password: string) => {
+  login: async (email: string, password: string): Promise<AdminLoginResponse> => {
     const response = await fetch("/api/auth/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -18,7 +19,7 @@ export const adminAuthService = {
       tokenHolder.set(data.token);
     }
 
-    return data;
+    return data as AdminLoginResponse;
   },
 
   logout: async () => {
@@ -26,12 +27,12 @@ export const adminAuthService = {
       tokenHolder.clear();
     }
 
-    // const response = await fetch("/api/auth/admin/logout", {
-    //   method: "POST",
-    // });
+    const response = await fetch("/api/auth/admin/logout", {
+      method: "POST",
+    });
 
-    // if (!response.ok) {
-    //   throw new Error("Logout failed");
-    // }
+    if (!response.ok) {
+      throw new Error("Logout failed");
+    }
   },
 };

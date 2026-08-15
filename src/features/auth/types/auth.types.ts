@@ -5,14 +5,23 @@ export interface LoginDto {
 
 export interface User {
   id: string;
+  username: string;
   email: string;
-  name: string;
+  phone?: string | null;
+  countryCode?: string | null;
   role: string;
-  avatarUrl: string | null;
+  verified?: boolean;
+  active?: boolean;
 }
 
 export interface AuthResponse {
   user: User;
+}
+
+export interface AdminLoginResponse {
+  user: User;
+  role: string;
+  token: string;
 }
 
 export interface ApiError {

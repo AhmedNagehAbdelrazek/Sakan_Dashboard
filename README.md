@@ -12,6 +12,8 @@ pnpm dev
 
 Sign in to the admin shell at `/login` → `/admin`.
 
+> **`NEXT_PUBLIC_API_URL`** must point at the backend **host root** (e.g. `http://localhost:8000`), not a prefixed path, because local proxy routes append the documented backend paths (`/api/auth/login`, `/api/user`, `/api/admin/dashboard`, …) to it. See `specs/001-admin-api-endpoints/quickstart.md` for the full validation walkthrough.
+
 ## Everything Lives in One Config
 
 `src/config/app.config.ts` (typed as `AppConfig`, validated by `src/config/app.config.schema.ts`) drives branding, theming, locale, navigation, and dashboard widgets. Run `pnpm test:run` to validate it.

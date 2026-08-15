@@ -16,6 +16,7 @@ interface EntityDetailSheetProps<T> {
   titleKey: string;
   record: T | null;
   fields: EntityDetailField<T>[];
+  footer?: ReactNode;
 }
 
 export function EntityDetailSheet<T>({
@@ -24,6 +25,7 @@ export function EntityDetailSheet<T>({
   titleKey,
   record,
   fields,
+  footer,
 }: EntityDetailSheetProps<T>) {
   const { t } = useTranslation();
 
@@ -43,6 +45,7 @@ export function EntityDetailSheet<T>({
             ))}
           </dl>
         )}
+        {footer && <div className="flex flex-wrap items-center gap-2 px-4 pt-4">{footer}</div>}
       </SheetContent>
     </Sheet>
   );

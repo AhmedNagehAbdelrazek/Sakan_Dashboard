@@ -26,7 +26,7 @@ export function AdminTopBar() {
       <div />
       <div className="flex items-center gap-4">
         {adminUser && (
-          <span className="text-sm font-medium">{adminUser.name}</span>
+          <span className="text-sm font-medium">{adminUser.username}</span>
         )}
         <Button variant="outline" size="sm" onClick={handleLogout}>
           {t("admin.topbar.logout")}

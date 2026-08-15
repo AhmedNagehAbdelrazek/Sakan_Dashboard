@@ -1,8 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-import type { DefaultValues, FieldErrors, FieldValues, Path, Resolver } from "react-hook-form";
-import { useForm } from "react-hook-form";
+import type {
+  Control,
+  DefaultValues,
+  FieldErrors,
+  FieldValues,
+  Path,
+  Resolver,
+} from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import type { ZodType } from "zod";
 import { FormField } from "@/components/forms/FormField";
 import { Button } from "@/components/ui/button";
@@ -15,14 +22,27 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslation } from "@/lib/i18n/client";
+
+export interface EntityFormFieldOption {
+  value: string;
+  labelKey: string;
+}
 
 export interface EntityFormFieldConfig {
   name: string;
   labelKey: string;
-  type?: "text" | "number" | "textarea";
+  type?: "text" | "number" | "textarea" | "select";
   placeholderKey?: string;
+  options?: EntityFormFieldOption[];
 }
 
 interface EntityFormDialogProps<TValues extends FieldValues> {
@@ -71,6 +91,7 @@ export function EntityFormDialog<TValues extends FieldValues>({
   const {
     register,
     handleSubmit,
+    control,
     reset,
     formState: { errors },
   } = useForm<TValues>({
@@ -87,6 +108,31 @@ export function EntityFormDialog<TValues extends FieldValues>({
   const errorFor = (name: string): string | undefined =>
     (errors as Record<string, { message?: string }>)[name]?.message;
 
+  const renderSelectField = (
+    field: EntityFormFieldConfig,
+    controlValue: Control<TValues>,
+    placeholder?: string,
+  ) => (
+    <Controller
+      name={field.name as Path<TValues>}
+      control={controlValue}
+      render={({ field: controllerField }) => (
+        <Select value={controllerField.value ?? ""} onValueChange={controllerField.onChange}>
+          <SelectTrigger className="w-full" aria-label={t(field.labelKey)}>
+            <SelectValue placeholder={placeholder} />
+          </SelectTrigger>
+          <SelectContent>
+            {(field.options ?? []).map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {t(option.labelKey)}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      )}
+    />
+  );
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
@@ -100,7 +146,9 @@ export function EntityFormDialog<TValues extends FieldValues>({
             const placeholder = field.placeholderKey ? t(field.placeholderKey) : undefined;
             return (
               <FormField key={field.name} label={t(field.labelKey)} error={error}>
-                {field.type === "textarea" ? (
+                {field.type === "select" ? (
+                  renderSelectField(field, control, placeholder)
+                ) : field.type === "textarea" ? (
                   <Textarea
                     placeholder={placeholder}
                     aria-invalid={Boolean(error)}

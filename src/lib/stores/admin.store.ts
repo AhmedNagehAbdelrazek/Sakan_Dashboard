@@ -3,9 +3,12 @@ import { persist } from "zustand/middleware";
 
 interface AdminUser {
   id: string;
+  username: string;
   email: string;
-  name: string;
+  phone?: string | null;
+  countryCode?: string | null;
   role: string;
+  verified?: boolean;
 }
 
 type AdminAuthStatus = "idle" | "loading" | "authenticated" | "unauthenticated";

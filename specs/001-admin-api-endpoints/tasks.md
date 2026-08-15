@@ -22,10 +22,10 @@
 
 **Purpose**: Project-level scaffolding that all user stories depend on (i18n keys, navigation config, shared server proxy helper, environment documentation)
 
-- [ ] T001 [P] Add i18n keys for all new admin sections (nav labels + page titles: Users, Properties, Applications, Payments, Activities, Flatmate Requests, Property Requests, Broadcast) to `src/lib/i18n/translations-sample.ts`, `messages/en.json`, and `messages/ar.json`
-- [ ] T002 Update `src/config/app.config.ts` `navigation` to add section entries (with `href`, `icon`, `labelKey`) for all eight new admin screens (depends on T001 keys existing)
-- [ ] T003 [P] Create shared server-side proxy helper `src/lib/api/proxy.ts` exporting `proxyGet/proxyPatch/proxyPost(req, path, body?)` that forwards to the external backend via the `Request` class using the Bearer token from the `auth_token` cookie via `getAuthHeaders` (`src/lib/api/withAuth.ts`) and returns the local `{ status, data }` envelope
-- [ ] T004 [P] Update `.env.example` and the README "Quick Start" env section to document that `NEXT_PUBLIC_API_URL` must point to the backend host root so the documented `/api/*` paths resolve (e.g. `http://localhost:8000`)
+- [X] T001 [P] Add i18n keys for all new admin sections (nav labels + page titles: Users, Properties, Applications, Payments, Activities, Flatmate Requests, Property Requests, Broadcast) to `src/lib/i18n/translations-sample.ts`, `messages/en.json`, and `messages/ar.json`
+- [X] T002 Update `src/config/app.config.ts` `navigation` to add section entries (with `href`, `icon`, `labelKey`) for all eight new admin screens (depends on T001 keys existing)
+- [X] T003 [P] Create shared server-side proxy helper `src/lib/api/proxy.ts` exporting `proxyGet/proxyPatch/proxyPost(req, path, body?)` that forwards to the external backend via the `Request` class using the Bearer token from the `auth_token` cookie via `getAuthHeaders` (`src/lib/api/withAuth.ts`) and returns the local `{ status, data }` envelope
+- [X] T004 [P] Update `.env.example` and the README "Quick Start" env section to document that `NEXT_PUBLIC_API_URL` must point to the backend host root so the documented `/api/*` paths resolve (e.g. `http://localhost:8000`)
 
 ---
 
@@ -35,11 +35,11 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T005 [P] Extend the admin user model to match the backend login shape (`username`, `phone`, `countryCode`, `verified`, `role`): update `src/features/auth/types/auth.types.ts` and the `AdminUser` interface + `login` action in `src/lib/stores/admin.store.ts`
-- [ ] T006 [P] Create list normaliser `src/lib/api/normalize.ts` (bare array or `{ items, page, limit, total, totalPages? }` → canonical `{ items, page, limit, total, totalPages }`) and align `src/components/management/entity-pagination.tsx` `EntityListMeta` to use camelCase `totalPages`
-- [ ] T007 [P] Add `DashboardMetrics` type and Zod schema (10 numeric metrics + `recentActivities`) to `src/features/dashboard/types/dashboard.types.ts` and `src/features/dashboard/schemas/dashboard.schema.ts`
-- [ ] T008 [P] Create local proxy route `src/app/api/admin/dashboard/route.ts` forwarding `GET /api/admin/dashboard` via the proxy helper and returning `{ status: "success", data: <metrics> }`
-- [ ] T009 [P] Add `getDashboardMetrics` to `src/features/dashboard/services/dashboardService.ts` and `useDashboardMetrics` to `src/features/dashboard/hooks/use-dashboard-metrics.ts` (React Query, key `["admin", "dashboard"]`)
+- [X] T005 [P] Extend the admin user model to match the backend login shape (`username`, `phone`, `countryCode`, `verified`, `role`): update `src/features/auth/types/auth.types.ts` and the `AdminUser` interface + `login` action in `src/lib/stores/admin.store.ts`
+- [X] T006 [P] Create list normaliser `src/lib/api/normalize.ts` (bare array or `{ items, page, limit, total, totalPages? }` → canonical `{ items, page, limit, total, totalPages }`) and align `src/components/management/entity-pagination.tsx` `EntityListMeta` to use camelCase `totalPages`
+- [X] T007 [P] Add `DashboardMetrics` type and Zod schema (10 numeric metrics + `recentActivities`) to `src/features/dashboard/types/dashboard.types.ts` and `src/features/dashboard/schemas/dashboard.schema.ts`
+- [X] T008 [P] Create local proxy route `src/app/api/admin/dashboard/route.ts` forwarding `GET /api/admin/dashboard` via the proxy helper and returning `{ status: "success", data: <metrics> }`
+- [X] T009 [P] Add `getDashboardMetrics` to `src/features/dashboard/services/dashboardService.ts` and `useDashboardMetrics` to `src/features/dashboard/hooks/use-dashboard-metrics.ts` (React Query, key `["admin", "dashboard"]`)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -53,10 +53,10 @@
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Update `src/app/api/auth/admin/login/route.ts` to call backend `POST /api/auth/login` and parse `{ user, role, token }`, set the httpOnly `auth_token` cookie, and return `{ user, token }` to the client
-- [ ] T011 [US1] Update `src/features/auth/services/adminAuthService.ts` to consume `{ user, token }`, store the token in `tokenHolder`, and un-comment the logout `fetch("/api/auth/admin/logout")` call
-- [ ] T012 [US1] Update `src/features/auth/components/AdminLoginForm.tsx` to map the returned user + role into the admin store and keep the existing 401/generic error handling
-- [ ] T013 [US1] Verify session persistence: confirm `src/middleware.ts` + `src/lib/auth/middleware.ts` use the `auth_token` cookie (update `src/lib/auth/constants.ts` if the cookie name diverges)
+- [X] T010 [US1] Update `src/app/api/auth/admin/login/route.ts` to call backend `POST /api/auth/login` and parse `{ user, role, token }`, set the httpOnly `auth_token` cookie, and return `{ user, token }` to the client
+- [X] T011 [US1] Update `src/features/auth/services/adminAuthService.ts` to consume `{ user, token }`, store the token in `tokenHolder`, and un-comment the logout `fetch("/api/auth/admin/logout")` call
+- [X] T012 [US1] Update `src/features/auth/components/AdminLoginForm.tsx` to map the returned user + role into the admin store and keep the existing 401/generic error handling
+- [X] T013 [US1] Verify session persistence: confirm `src/middleware.ts` + `src/lib/auth/middleware.ts` use the `auth_token` cookie (update `src/lib/auth/constants.ts` if the cookie name diverges)
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -70,8 +70,8 @@
 
 ### Implementation for User Story 2
 
-- [ ] T014 [US2] Update `src/config/app.config.ts` `dashboard.widgets` to source the 10 numeric metrics from `/api/admin/dashboard` (stat-card, `field` + `format: "number"`) and `recentActivities` as a ranked-list widget (replacing the sample `total-value`/`trend`/`top-list` sources)
-- [ ] T015 [US2] Update `src/features/dashboard/components/dashboard-page.tsx` to use `useDashboardMetrics` (via `useWidgetData`/direct query) so each widget renders through `WidgetFrame` with its own loading/error/empty/retry states
+- [X] T014 [US2] Update `src/config/app.config.ts` `dashboard.widgets` to source the 10 numeric metrics from `/api/admin/dashboard` (stat-card, `field` + `format: "number"`) and `recentActivities` as a ranked-list widget (replacing the sample `total-value`/`trend`/`top-list` sources)
+- [X] T015 [US2] Update `src/features/dashboard/components/dashboard-page.tsx` to use `useDashboardMetrics` (via `useWidgetData`/direct query) so each widget renders through `WidgetFrame` with its own loading/error/empty/retry states
 
 **Checkpoint**: At this point, User Story 2 should be fully functional and testable independently
 

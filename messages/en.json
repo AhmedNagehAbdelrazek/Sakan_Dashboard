@@ -30,7 +30,15 @@
       "general": "General",
       "settings": "Settings",
       "expand": "Expand sidebar",
-      "collapse": "Collapse sidebar"
+      "collapse": "Collapse sidebar",
+      "users": "Users",
+      "properties": "Properties",
+      "applications": "Applications",
+      "payments": "Payments",
+      "activities": "Activity Log",
+      "flatmateRequests": "Flatmate Requests",
+      "propertyRequests": "Property Requests",
+      "broadcast": "Broadcast"
     },
     "topbar": {
       "logout": "Logout"
@@ -42,15 +50,282 @@
     },
     "settings": {
       "placeholder": "Project-specific settings will appear here."
+    },
+    "users": {
+      "title": "Users"
+    },
+    "properties": {
+      "title": "Properties"
+    },
+    "applications": {
+      "title": "Applications"
+    },
+    "payments": {
+      "title": "Payments"
+    },
+    "activities": {
+      "title": "Activity Log"
+    },
+    "flatmateRequests": {
+      "title": "Flatmate Requests"
+    },
+    "propertyRequests": {
+      "title": "Property Requests"
+    },
+    "broadcast": {
+      "title": "Broadcast"
     }
   },
   "dashboard": {
     "kpis": {
-      "totalValue": "Total Value"
+      "totalValue": "Total Value",
+      "totalUsers": "Total Users",
+      "totalLandlords": "Landlords",
+      "totalStudents": "Students",
+      "totalProperties": "Properties",
+      "approvedProperties": "Approved Properties",
+      "totalApplications": "Applications",
+      "pendingApplications": "Pending Applications",
+      "totalPayments": "Payments",
+      "receivedPayments": "Received Payments",
+      "releasedPayments": "Released Payments"
     },
     "widgets": {
       "trend": "Trend",
-      "topItems": "Top Items"
+      "topItems": "Top Items",
+      "recentActivities": "Recent Activity"
+    }
+  },
+  "users": {
+    "columns": {
+      "username": "Username",
+      "email": "Email",
+      "role": "Role",
+      "verified": "Verified",
+      "active": "Active"
+    },
+    "roles": {
+      "student": "Student",
+      "landlord": "Landlord",
+      "admin": "Admin",
+      "super_admin": "Super Admin",
+      "manager": "Manager"
+    },
+    "edit": {
+      "title": "Edit User",
+      "submit": "Save Changes"
+    },
+    "empty": "No users found",
+    "emptyDescription": "Try adjusting your search or filters.",
+    "detail": {
+      "title": "User Details",
+      "phone": "Phone",
+      "countryCode": "Country Code",
+      "createdAt": "Created"
+    }
+  },
+  "properties": {
+    "columns": {
+      "title": "Title",
+      "type": "Type",
+      "price": "Monthly Price",
+      "state": "State",
+      "owner": "Owner"
+    },
+    "filter": {
+      "state": "Filter by state"
+    },
+    "states": {
+      "all": "All states",
+      "sent": "Sent",
+      "approved": "Approved",
+      "declined": "Declined"
+    },
+    "detail": {
+      "title": "Property Details",
+      "description": "Description",
+      "address": "Address",
+      "totalRooms": "Total Rooms",
+      "availableRooms": "Available Rooms",
+      "amenities": "Amenities",
+      "images": "Images"
+    },
+    "decline": {
+      "title": "Decline Property",
+      "description": "Provide a reason (optional).",
+      "reason": "Reason (optional)",
+      "placeholder": "e.g. Insufficient photos or unclear address."
+    },
+    "confirm": {
+      "approve": {
+        "title": "Approve property?",
+        "description": "This will approve the property for listing."
+      },
+      "reopen": {
+        "title": "Reopen property?",
+        "description": "This will return the property to review."
+      }
+    },
+    "empty": "No properties found"
+  },
+  "applications": {
+    "columns": {
+      "applicant": "Applicant",
+      "property": "Property",
+      "status": "Status",
+      "createdAt": "Applied At"
+    },
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "completed": "Completed"
+    },
+    "detail": {
+      "title": "Application Details",
+      "property": "Property",
+      "approvalExpiresAt": "Approval Expires",
+      "approvedAt": "Approved At",
+      "completedAt": "Completed At"
+    },
+    "reject": {
+      "title": "Reject Application",
+      "description": "Select a reason category (required).",
+      "reasonCategory": "Reason Category",
+      "detail": "Detail (optional)"
+    },
+    "rejectCategories": {
+      "not_available": "Not available",
+      "not_interested": "Not interested",
+      "payment_issue": "Payment issue",
+      "documents_missing": "Documents missing",
+      "other": "Other"
+    },
+    "confirm": {
+      "approve": {
+        "title": "Approve application?",
+        "description": "This will approve the application for 24 hours."
+      },
+      "complete": {
+        "title": "Complete application?",
+        "description": "This will mark the application as completed."
+      }
+    },
+    "empty": "No applications found"
+  },
+  "payments": {
+    "columns": {
+      "application": "Application",
+      "student": "Student",
+      "amount": "Amount",
+      "method": "Method",
+      "status": "Status"
+    },
+    "status": {
+      "pending": "Pending",
+      "received": "Received",
+      "released": "Released",
+      "refunded": "Refunded"
+    },
+    "detail": {
+      "title": "Payment Details",
+      "receivedAt": "Received At",
+      "releasedAt": "Released At",
+      "refundReason": "Refund Reason",
+      "refundedAt": "Refunded At"
+    },
+    "refund": {
+      "title": "Refund Payment",
+      "description": "Provide a reason (required).",
+      "reason": "Reason"
+    },
+    "confirm": {
+      "receive": {
+        "title": "Receive payment?",
+        "description": "This will mark the payment as received."
+      },
+      "release": {
+        "title": "Release payment?",
+        "description": "This will release the payment to the landlord."
+      }
+    },
+    "empty": "No payments found"
+  },
+  "activities": {
+    "columns": {
+      "user": "User",
+      "type": "Activity",
+      "timestamp": "Timestamp",
+      "details": "Details"
+    },
+    "detail": {
+      "title": "Activity Details",
+      "user": "User"
+    },
+    "empty": "No activities found"
+  },
+  "flatmateRequests": {
+    "columns": {
+      "user": "User",
+      "budget": "Preferred Budget",
+      "type": "Preferred Type",
+      "people": "People Wanted",
+      "status": "Status"
+    },
+    "status": {
+      "active": "Active"
+    },
+    "detail": {
+      "title": "Flatmate Request Details",
+      "joinInterests": "Join Interests"
+    },
+    "empty": "No flatmate requests found"
+  },
+  "propertyRequests": {
+    "columns": {
+      "message": "Message",
+      "type": "Property Type",
+      "requestType": "Request Type",
+      "major": "Major",
+      "status": "Status"
+    },
+    "requestTypes": {
+      "looking": "Looking"
+    },
+    "status": {
+      "pending": "Pending",
+      "contacted": "Contacted",
+      "resolved": "Resolved",
+      "closed": "Closed"
+    },
+    "detail": {
+      "title": "Property Request Details",
+      "address": "Address"
+    },
+    "statusUpdate": {
+      "title": "Update Status",
+      "submit": "Save"
+    },
+    "empty": "No property requests found"
+  },
+  "broadcast": {
+    "title": {
+      "label": "Title",
+      "placeholder": "Broadcast title"
+    },
+    "body": {
+      "label": "Body",
+      "placeholder": "Optional message body"
+    },
+    "type": {
+      "label": "Type",
+      "placeholder": "Optional type (e.g. promo)"
+    },
+    "send": "Send Broadcast",
+    "sending": "Sending...",
+    "success": "Broadcast sent to {count} recipients",
+    "validation": {
+      "titleRequired": "Title is required"
     }
   },
   "theme": {
@@ -86,6 +361,26 @@
     "generate": "Generate",
     "name": "Name",
     "price": "Price",
-    "image": "Image"
+    "image": "Image",
+    "previous": "Previous",
+    "next": "Next",
+    "pagination": "Page {page} of {pages}",
+    "details": "Details",
+    "approve": "Approve",
+    "decline": "Decline",
+    "reject": "Reject",
+    "reopen": "Reopen",
+    "complete": "Complete",
+    "receive": "Receive",
+    "release": "Release",
+    "refund": "Refund",
+    "send": "Send",
+    "reason": "Reason",
+    "role": "Role",
+    "all": "All",
+    "amount": "Amount",
+    "method": "Method",
+    "date": "Date",
+    "owner": "Owner"
   }
 }

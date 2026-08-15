@@ -30,7 +30,15 @@
       "general": "عام",
       "settings": "الإعدادات",
       "expand": "توسيع الشريط الجانبي",
-      "collapse": "طي الشريط الجانبي"
+      "collapse": "طي الشريط الجانبي",
+      "users": "المستخدمون",
+      "properties": "العقارات",
+      "applications": "الطلبات",
+      "payments": "المدفوعات",
+      "activities": "سجل النشاط",
+      "flatmateRequests": "طلبات السكن المشترك",
+      "propertyRequests": "طلبات العقارات",
+      "broadcast": "الإعلانات"
     },
     "topbar": {
       "logout": "تسجيل الخروج"
@@ -42,15 +50,282 @@
     },
     "settings": {
       "placeholder": "ستظهر الإعدادات الخاصة بمشروعك هنا."
+    },
+    "users": {
+      "title": "المستخدمون"
+    },
+    "properties": {
+      "title": "العقارات"
+    },
+    "applications": {
+      "title": "الطلبات"
+    },
+    "payments": {
+      "title": "المدفوعات"
+    },
+    "activities": {
+      "title": "سجل النشاط"
+    },
+    "flatmateRequests": {
+      "title": "طلبات السكن المشترك"
+    },
+    "propertyRequests": {
+      "title": "طلبات العقارات"
+    },
+    "broadcast": {
+      "title": "الإعلانات"
     }
   },
   "dashboard": {
     "kpis": {
-      "totalValue": "القيمة الإجمالية"
+      "totalValue": "القيمة الإجمالية",
+      "totalUsers": "إجمالي المستخدمين",
+      "totalLandlords": "الملاك",
+      "totalStudents": "الطلاب",
+      "totalProperties": "العقارات",
+      "approvedProperties": "العقارات المعتمدة",
+      "totalApplications": "الطلبات",
+      "pendingApplications": "الطلبات المعلقة",
+      "totalPayments": "المدفوعات",
+      "receivedPayments": "المدفوعات المستلمة",
+      "releasedPayments": "المدفوعات المصدرة"
     },
     "widgets": {
       "trend": "الاتجاه",
-      "topItems": "أفضل العناصر"
+      "topItems": "أفضل العناصر",
+      "recentActivities": "النشاط الأخير"
+    }
+  },
+  "users": {
+    "columns": {
+      "username": "اسم المستخدم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "verified": "موثّق",
+      "active": "نشط"
+    },
+    "roles": {
+      "student": "طالب",
+      "landlord": "مالك",
+      "admin": "مسؤول",
+      "super_admin": "مسؤول أعلى",
+      "manager": "مدير"
+    },
+    "edit": {
+      "title": "تعديل المستخدم",
+      "submit": "حفظ التغييرات"
+    },
+    "empty": "لا يوجد مستخدمون",
+    "emptyDescription": "حاول تعديل البحث أو الفلاتر.",
+    "detail": {
+      "title": "تفاصيل المستخدم",
+      "phone": "الهاتف",
+      "countryCode": "رمز الدولة",
+      "createdAt": "تاريخ الإنشاء"
+    }
+  },
+  "properties": {
+    "columns": {
+      "title": "العنوان",
+      "type": "النوع",
+      "price": "السعر الشهري",
+      "state": "الحالة",
+      "owner": "المالك"
+    },
+    "filter": {
+      "state": "تصفية حسب الحالة"
+    },
+    "states": {
+      "all": "كل الحالات",
+      "sent": "قيد الإرسال",
+      "approved": "معتمد",
+      "declined": "مرفوض"
+    },
+    "detail": {
+      "title": "تفاصيل العقار",
+      "description": "الوصف",
+      "address": "العنوان",
+      "totalRooms": "إجمالي الغرف",
+      "availableRooms": "الغرف المتاحة",
+      "amenities": "المرافق",
+      "images": "الصور"
+    },
+    "decline": {
+      "title": "رفض العقار",
+      "description": "أدخل السبب (اختياري).",
+      "reason": "السبب (اختياري)",
+      "placeholder": "مثال: صور غير كافية أو عنوان غير واضح."
+    },
+    "confirm": {
+      "approve": {
+        "title": "اعتماد العقار؟",
+        "description": "سيتم اعتماد العقار للعرض."
+      },
+      "reopen": {
+        "title": "إعادة فتح العقار؟",
+        "description": "سيتم إعادة العقار للمراجعة."
+      }
+    },
+    "empty": "لا توجد عقارات"
+  },
+  "applications": {
+    "columns": {
+      "applicant": "مقدم الطلب",
+      "property": "العقار",
+      "status": "الحالة",
+      "createdAt": "تاريخ التقديم"
+    },
+    "status": {
+      "pending": "معلق",
+      "approved": "معتمد",
+      "rejected": "مرفوض",
+      "completed": "مكتمل"
+    },
+    "detail": {
+      "title": "تفاصيل الطلب",
+      "property": "العقار",
+      "approvalExpiresAt": "تنتهي الموافقة",
+      "approvedAt": "تاريخ الموافقة",
+      "completedAt": "تاريخ الإكمال"
+    },
+    "reject": {
+      "title": "رفض الطلب",
+      "description": "اختر فئة السبب (مطلوبة).",
+      "reasonCategory": "فئة السبب",
+      "detail": "التفاصيل (اختيارية)"
+    },
+    "rejectCategories": {
+      "not_available": "غير متاح",
+      "not_interested": "غير مهتم",
+      "payment_issue": "مشكلة في الدفع",
+      "documents_missing": "مستندات ناقصة",
+      "other": "أخرى"
+    },
+    "confirm": {
+      "approve": {
+        "title": "اعتماد الطلب؟",
+        "description": "سيتم اعتماد الطلب لمدة 24 ساعة."
+      },
+      "complete": {
+        "title": "إكمال الطلب؟",
+        "description": "سيتم تحديد الطلب كمكتمل."
+      }
+    },
+    "empty": "لا توجد طلبات"
+  },
+  "payments": {
+    "columns": {
+      "application": "الطلب",
+      "student": "الطالب",
+      "amount": "المبلغ",
+      "method": "الطريقة",
+      "status": "الحالة"
+    },
+    "status": {
+      "pending": "معلق",
+      "received": "مستلم",
+      "released": "مصدر",
+      "refunded": "مسترجع"
+    },
+    "detail": {
+      "title": "تفاصيل الدفع",
+      "receivedAt": "تاريخ الاستلام",
+      "releasedAt": "تاريخ الإصدار",
+      "refundReason": "سبب الاسترداد",
+      "refundedAt": "تاريخ الاسترداد"
+    },
+    "refund": {
+      "title": "استرداد الدفع",
+      "description": "أدخل السبب (مطلوب).",
+      "reason": "السبب"
+    },
+    "confirm": {
+      "receive": {
+        "title": "استلام الدفع؟",
+        "description": "سيتم تحديد الدفع كمستلم."
+      },
+      "release": {
+        "title": "إصدار الدفع؟",
+        "description": "سيتم إصدار الدفع للمالك."
+      }
+    },
+    "empty": "لا توجد مدفوعات"
+  },
+  "activities": {
+    "columns": {
+      "user": "المستخدم",
+      "type": "النشاط",
+      "timestamp": "الوقت",
+      "details": "التفاصيل"
+    },
+    "detail": {
+      "title": "تفاصيل النشاط",
+      "user": "المستخدم"
+    },
+    "empty": "لا توجد أنشطة"
+  },
+  "flatmateRequests": {
+    "columns": {
+      "user": "المستخدم",
+      "budget": "الميزانية المفضلة",
+      "type": "النوع المفضل",
+      "people": "عدد الأفراد المطلوب",
+      "status": "الحالة"
+    },
+    "status": {
+      "active": "نشط"
+    },
+    "detail": {
+      "title": "تفاصيل طلب السكن المشترك",
+      "joinInterests": "اهتمامات الانضمام"
+    },
+    "empty": "لا توجد طلبات سكن مشترك"
+  },
+  "propertyRequests": {
+    "columns": {
+      "message": "الرسالة",
+      "type": "نوع العقار",
+      "requestType": "نوع الطلب",
+      "major": "التخصص",
+      "status": "الحالة"
+    },
+    "requestTypes": {
+      "looking": "بحث"
+    },
+    "status": {
+      "pending": "معلق",
+      "contacted": "تم التواصل",
+      "resolved": "تم الحل",
+      "closed": "مغلق"
+    },
+    "detail": {
+      "title": "تفاصيل طلب العقار",
+      "address": "العنوان"
+    },
+    "statusUpdate": {
+      "title": "تحديث الحالة",
+      "submit": "حفظ"
+    },
+    "empty": "لا توجد طلبات عقارات"
+  },
+  "broadcast": {
+    "title": {
+      "label": "العنوان",
+      "placeholder": "عنوان الإعلان"
+    },
+    "body": {
+      "label": "الرسالة",
+      "placeholder": "نص الرسالة (اختياري)"
+    },
+    "type": {
+      "label": "النوع",
+      "placeholder": "النوع (اختياري) (مثال: ترويجي)"
+    },
+    "send": "إرسال الإعلان",
+    "sending": "جارٍ الإرسال...",
+    "success": "تم إرسال الإعلان إلى {count} مستلم",
+    "validation": {
+      "titleRequired": "العنوان مطلوب"
     }
   },
   "theme": {
@@ -86,6 +361,26 @@
     "generate": "توليد",
     "name": "الاسم",
     "price": "السعر",
-    "image": "الصورة"
+    "image": "الصورة",
+    "previous": "السابق",
+    "next": "التالي",
+    "pagination": "صفحة {page} من {pages}",
+    "details": "التفاصيل",
+    "approve": "اعتماد",
+    "decline": "رفض",
+    "reject": "رفض",
+    "reopen": "إعادة فتح",
+    "complete": "اكتمال",
+    "receive": "استلام",
+    "release": "إصدار",
+    "refund": "استرداد",
+    "send": "إرسال",
+    "reason": "السبب",
+    "role": "الدور",
+    "all": "الكل",
+    "amount": "المبلغ",
+    "method": "الطريقة",
+    "date": "التاريخ",
+    "owner": "المالك"
   }
 }
